@@ -1,5 +1,6 @@
 ﻿using ListFilmsMvc.Data;
 using ListFilmsMvc.Models;
+using ListFilmsMvc.Models.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -21,5 +22,32 @@ namespace ListFilmsMvc.Services
         {
             return await _context.Movie.ToListAsync();
         }
+
+        public async Task InsertAsync(Movie obj)
+        {
+            _context.Add(obj);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(int? id)
+        {
+            try
+            {
+                var obj = _context.Movie.Find(id);
+                _context.Remove(obj);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Can't delete Movie/Serie.\n{e.Message}");
+            }
+        }
+
+        public async Task<Movie> FindByIdAsync(int id)
+        {
+            return _context.Movie.FirstOrDefaultAsync(x => x.Id == id).Result;
+        }
+
+
     }
 }
