@@ -1,4 +1,5 @@
 ﻿using ListFilmsMvc.Data;
+using ListFilmsMvc.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -45,6 +46,7 @@ namespace ListFilmsMvc
 
             //Services addition on project
             services.AddScoped<SeedingService>();
+            services.AddScoped<MovieService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

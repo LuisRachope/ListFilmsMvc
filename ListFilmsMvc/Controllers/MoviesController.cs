@@ -1,6 +1,7 @@
 ﻿using ListFilmsMvc.Data;
 using ListFilmsMvc.Models;
 using ListFilmsMvc.Models.Enums;
+using ListFilmsMvc.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,19 +12,17 @@ namespace ListFilmsMvc.Controllers
 {
     public class MoviesController : Controller
     {
-        private readonly ListFilmsMvcContext _context;
+        public readonly MovieService _movieService;
 
-        public MoviesController(ListFilmsMvcContext context)
+        public MoviesController(MovieService movieService)
         {
-            _context = context;
+            _movieService = movieService;
         }
 
-
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            List<Movie> movies = _context.Movie.ToList();
-
-            return View(movies);
+            var list = await _movieService.FindAllAsync();
+            return View(list);
         }
 
     }

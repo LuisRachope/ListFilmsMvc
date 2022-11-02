@@ -36,7 +36,6 @@ namespace ListFilmsMvc.Data
 
             // Execution saving data
             _context.SaveChanges();
-
         }
     }
 }
