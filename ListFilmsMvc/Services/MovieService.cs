@@ -43,6 +43,25 @@ namespace ListFilmsMvc.Services
             }
         }
 
+
+        public async Task UpdateAsync(Movie obj)
+        {
+            bool hasAny = await _context.Movie.AnyAsync(x => x.Id == obj.Id);
+            if (!hasAny)
+            {
+                throw new Exception("Id not found");
+            }
+            try
+            {
+                _context.Update(obj);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
         public async Task<Movie> FindByIdAsync(int id)
         {
             return _context.Movie.FirstOrDefaultAsync(x => x.Id == id).Result;
