@@ -31,7 +31,7 @@
             @Html.DisplayFor(model => model.RealeseYear)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.TypeGenre.Nome)
+            @Html.DisplayNameFor(model => model.TypeGenre)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.TypeGenre.Nome)
@@ -50,9 +50,9 @@
         </dd>
     </dl>
     <form asp-action="Delete">
+        <a type="button" asp-action="Index" class="btn btn-warning">Back to list</a>
         <input type="hidden" asp-for="Id" />
         <input type="submit" value="Delete" class="btn btn-danger" />
-        <a asp-action="Index">Back to list</a>
     </form>
 </div>
 

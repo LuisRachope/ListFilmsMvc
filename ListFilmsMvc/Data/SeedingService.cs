@@ -31,7 +31,7 @@ namespace ListFilmsMvc.Data
             Genre g3 = new Genre(3, "Drama");
             Genre g4 = new Genre(4, "Horror");
             Genre g5 = new Genre(5, "Romance");
-            Genre g6 = new Genre(6, "ScienceFiction");
+            Genre g6 = new Genre(6, "Science Fiction");
             Genre g7 = new Genre(7, "Mystery");
             Genre g8 = new Genre(8, "Fantasy");
 
