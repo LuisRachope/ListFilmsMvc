@@ -21,5 +21,36 @@ namespace ListFilmsMvc.Services
         {
             return await _context.Genre.ToListAsync();
         }
+
+        public async Task<Genre> FindByIdAsync(int id)
+        {
+            return _context.Genre.FirstOrDefaultAsync(x => x.Id == id).Result;
+        }
+
+        public async Task InsertAsync(Genre obj)
+        {
+            _context.Add(obj);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateAsync(Genre obj)
+        {
+            _context.Update(obj);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            try
+            {
+                var obj = _context.Genre.Find(id);
+                _context.Remove(obj);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Can't delete Genre.\n{e.Message}");
+            }
+        }
     }
 }
