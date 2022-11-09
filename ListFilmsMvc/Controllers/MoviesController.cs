@@ -15,13 +15,13 @@ namespace ListFilmsMvc.Controllers
     {
         public readonly MovieService _movieService;
         private readonly GenreServices _genreService;
-        //private readonly CategoryServices _categoryService;
+        private readonly CategoryServices _categoryService;
 
-        public MoviesController(MovieService movieService, GenreServices genreServices)
+        public MoviesController(MovieService movieService, GenreServices genreServices, CategoryServices categoryServices)
         {
             _movieService = movieService;
             _genreService = genreServices;
-            //_categoryService = categoryService;
+            _categoryService = categoryServices;
         }
 
         public async Task<IActionResult> Index()
@@ -29,6 +29,7 @@ namespace ListFilmsMvc.Controllers
 
             var movies = await _movieService.FindAllAsync();
             var genres = await _genreService.FindAllAsync();
+            var categories = await _categoryService.FindAllAsync();
 
             List<Movie> list = new List<Movie>();
             foreach (var obj in movies)
@@ -39,7 +40,7 @@ namespace ListFilmsMvc.Controllers
                     obj.Director,
                     obj.RealeseYear,
                     genres.FirstOrDefault(x => x.Id == obj.GenreId),
-                    obj.TypeCategory,
+                    categories.FirstOrDefault(x => x.Id == obj.CategoryId),
                     obj.Rating)); ;
             }
 
@@ -49,7 +50,8 @@ namespace ListFilmsMvc.Controllers
         public async Task<IActionResult> Create()
         {
             var genres = await _genreService.FindAllAsync();
-            var viewModel = new MovieFormViewModel { Genres = genres };
+            var categories = await _categoryService.FindAllAsync();
+            var viewModel = new MovieFormViewModel { Genres = genres, Categories = categories };
             return View(viewModel);
         }
 
@@ -60,7 +62,8 @@ namespace ListFilmsMvc.Controllers
             if (!ModelState.IsValid)
             {
                 var genres = await _genreService.FindAllAsync();
-                var viewModel = new MovieFormViewModel { Movie = movie, Genres = genres };
+                var categories = await _categoryService.FindAllAsync();
+                var viewModel = new MovieFormViewModel { Genres = genres, Categories = categories };
                 return View(viewModel);
             }
             await _movieService.InsertAsync(movie);
@@ -77,12 +80,13 @@ namespace ListFilmsMvc.Controllers
 
             var movie = await _movieService.FindByIdAsync(id.Value);
             var genres = await _genreService.FindAllAsync();
+            var categories = await _categoryService.FindAllAsync();
             Movie obj = new Movie(movie.Id,
                 movie.Title,
                 movie.Director,
                 movie.RealeseYear,
                 genres.Find(x => x.Id == movie.GenreId),
-                movie.TypeCategory,
+                categories.Find(x => x.Id == movie.CategoryId),
                 movie.Rating);
 
             if (obj == null)
@@ -108,15 +112,16 @@ namespace ListFilmsMvc.Controllers
                 return RedirectToAction(nameof(Error), new { message = "Id not provided" });
             }
 
-            
+
             var movie = await _movieService.FindByIdAsync(id.Value);
             var genres = await _genreService.FindAllAsync();
-            Movie obj = new Movie(movie.Id, 
-                movie.Title, 
-                movie.Director, 
+            var categories = await _categoryService.FindAllAsync();
+            Movie obj = new Movie(movie.Id,
+                movie.Title,
+                movie.Director,
                 movie.RealeseYear,
-                genres.Find(x => x.Id == movie.GenreId), 
-                movie.TypeCategory, 
+                genres.Find(x => x.Id == movie.GenreId),
+                categories.Find(x => x.Id == movie.CategoryId),
                 movie.Rating);
 
             if (obj == null)
@@ -141,7 +146,8 @@ namespace ListFilmsMvc.Controllers
             }
 
             List<Genre> genres = await _genreService.FindAllAsync();
-            MovieFormViewModel viewModel = new MovieFormViewModel { Movie = obj, Genres = genres };
+            List<Category> categories = await _categoryService.FindAllAsync();
+            MovieFormViewModel viewModel = new MovieFormViewModel { Movie = obj, Genres = genres, Categories = categories};
 
             return View(viewModel);
         }

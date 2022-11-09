@@ -48,6 +48,7 @@ namespace ListFilmsMvc
             services.AddScoped<SeedingService>();
             services.AddScoped<MovieService>();
             services.AddScoped<GenreServices>();
+            services.AddScoped<CategoryServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
