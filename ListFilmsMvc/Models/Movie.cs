@@ -19,7 +19,7 @@ namespace ListFilmsMvc.Models
         [Display(Name = "Genre")]
         public Genre TypeGenre { get; set; }
         public int GenreId { get; set; }
-        public TypeCategory Category { get; set; }
+        public Category TypeCategory { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:F1}")]
         public double Rating { get; set; }
@@ -28,14 +28,14 @@ namespace ListFilmsMvc.Models
         {
         }
 
-        public Movie(int id, string title, string director, int releaseYear, Genre genre, TypeCategory category, double rating)
+        public Movie(int id, string title, string director, int releaseYear, Genre genre, Category category, double rating)
         {
             Id = id;
             Title = title;
             Director = director;
             RealeseYear = releaseYear;
             TypeGenre = genre;
-            Category = category;
+            TypeCategory = category;
             Rating = rating;
         }
 

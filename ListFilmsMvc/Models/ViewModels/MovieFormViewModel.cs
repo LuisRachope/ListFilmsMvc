@@ -10,5 +10,6 @@ namespace ListFilmsMvc.Models.ViewModels
     {
         public Movie Movie { get; set; }
         public ICollection<Genre> Genres { get; set; }
+        public ICollection<Category> Categories { get; set; }
     }
 }

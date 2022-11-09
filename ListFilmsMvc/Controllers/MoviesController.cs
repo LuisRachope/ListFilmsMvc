@@ -38,7 +38,7 @@ namespace ListFilmsMvc.Controllers
                     obj.Director,
                     obj.RealeseYear,
                     genres.FirstOrDefault(x => x.Id == obj.GenreId),
-                    obj.Category,
+                    obj.TypeCategory,
                     obj.Rating)); ;
             }
 
@@ -81,7 +81,7 @@ namespace ListFilmsMvc.Controllers
                 movie.Director,
                 movie.RealeseYear,
                 genres.Find(x => x.Id == movie.GenreId),
-                movie.Category,
+                movie.TypeCategory,
                 movie.Rating);
 
             if (obj == null)
@@ -115,7 +115,7 @@ namespace ListFilmsMvc.Controllers
                 movie.Director, 
                 movie.RealeseYear,
                 genres.Find(x => x.Id == movie.GenreId), 
-                movie.Category, 
+                movie.TypeCategory, 
                 movie.Rating);
 
             if (obj == null)

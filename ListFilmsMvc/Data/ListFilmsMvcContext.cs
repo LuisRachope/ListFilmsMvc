@@ -16,5 +16,6 @@ namespace ListFilmsMvc.Data
 
         public DbSet<Movie> Movie { get; set; }
         public DbSet<Genre> Genre { get; set; }
+        public DbSet<Category> Category { get; set; }
     }
 }

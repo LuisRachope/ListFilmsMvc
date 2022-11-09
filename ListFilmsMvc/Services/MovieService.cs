@@ -43,7 +43,6 @@ namespace ListFilmsMvc.Services
             }
         }
 
-
         public async Task UpdateAsync(Movie obj)
         {
             bool hasAny = await _context.Movie.AnyAsync(x => x.Id == obj.Id);
@@ -64,7 +63,7 @@ namespace ListFilmsMvc.Services
 
         public async Task<Movie> FindByIdAsync(int id)
         {
-            return _context.Movie.FirstOrDefaultAsync(x => x.Id == id).Result;
+            return await _context.Movie.FirstOrDefaultAsync(x => x.Id == id);
         }
 
 

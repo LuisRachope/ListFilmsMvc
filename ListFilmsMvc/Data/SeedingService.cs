@@ -25,6 +25,10 @@ namespace ListFilmsMvc.Data
 
             // Creation data to migration on DB (Movie)
 
+            // Creation data of Categories
+            Category c1 = new Category(1, "Film");
+            Category c2 = new Category(2, "Serie");
+
             // Creation data of Genres
             Genre g1 = new Genre(1, "Adventure");
             Genre g2 = new Genre(2, "Comedy");
@@ -36,14 +40,15 @@ namespace ListFilmsMvc.Data
             Genre g8 = new Genre(8, "Fantasy");
 
             // Creation data of movies/series
-            Movie m1 = new Movie(1, "O Poderoso Chefão", "Francis Ford Coppola", 1972, g3, TypeCategory.Film, 9.2);
-            Movie m2 = new Movie(2, "Guerra nas Estrelas", "George Lucas", 1977, g1, TypeCategory.Film, 8.6);
-            Movie m3 = new Movie(3, "O Silêncio dos Inocentes", "Jonathan Demme", 1991, g3, TypeCategory.Film, 8.6);
-            Movie m4 = new Movie(4, "The Office", "Greg Daniels", 2005, g2, TypeCategory.Series, 9.0);
-            Movie m5 = new Movie(5, "O Mandaloriano", "Jon Favreau", 2019, g8, TypeCategory.Series, 8.7);
-            Movie m6 = new Movie(6, "Alquimia das Almas", "Jonathan Demme", 2022, g8, TypeCategory.Series, 8.7);
+            Movie m1 = new Movie(1, "O Poderoso Chefão", "Francis Ford Coppola", 1972, g3, c1, 9.2);
+            Movie m2 = new Movie(2, "Guerra nas Estrelas", "George Lucas", 1977, g1, c1, 8.6);
+            Movie m3 = new Movie(3, "O Silêncio dos Inocentes", "Jonathan Demme", 1991, g3, c1, 8.6);
+            Movie m4 = new Movie(4, "The Office", "Greg Daniels", 2005, g2, c2, 9.0);
+            Movie m5 = new Movie(5, "O Mandaloriano", "Jon Favreau", 2019, g8, c2, 8.7);
+            Movie m6 = new Movie(6, "Alquimia das Almas", "Jonathan Demme", 2022, g8, c2, 8.7);
 
             // Adding movies on DB
+            _context.Category.AddRange(c1,c2);
             _context.Genre.AddRange(g1, g2, g3, g4, g5, g6, g7, g8);
             _context.Movie.AddRange(m1, m2, m3, m4, m5, m6);
 
