@@ -7,14 +7,10 @@ namespace ListFilmsMvc.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
+            migrationBuilder.RenameColumn(
                 name: "Category",
-                table: "Movie");
-
-            migrationBuilder.AddColumn<int>(
-                name: "TypeCategoryId",
                 table: "Movie",
-                nullable: true);
+                newName: "CategoryId");
 
             migrationBuilder.CreateTable(
                 name: "Category",
@@ -30,41 +26,36 @@ namespace ListFilmsMvc.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Movie_TypeCategoryId",
+                name: "IX_Movie_CategoryId",
                 table: "Movie",
-                column: "TypeCategoryId");
+                column: "CategoryId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Movie_Category_TypeCategoryId",
+                name: "FK_Movie_Category_CategoryId",
                 table: "Movie",
-                column: "TypeCategoryId",
+                column: "CategoryId",
                 principalTable: "Category",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
+                onDelete: ReferentialAction.Cascade);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Movie_Category_TypeCategoryId",
+                name: "FK_Movie_Category_CategoryId",
                 table: "Movie");
 
             migrationBuilder.DropTable(
                 name: "Category");
 
             migrationBuilder.DropIndex(
-                name: "IX_Movie_TypeCategoryId",
+                name: "IX_Movie_CategoryId",
                 table: "Movie");
 
-            migrationBuilder.DropColumn(
-                name: "TypeCategoryId",
-                table: "Movie");
-
-            migrationBuilder.AddColumn<int>(
-                name: "Category",
+            migrationBuilder.RenameColumn(
+                name: "CategoryId",
                 table: "Movie",
-                nullable: false,
-                defaultValue: 0);
+                newName: "Category");
         }
     }
 }

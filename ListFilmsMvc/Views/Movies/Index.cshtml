@@ -27,7 +27,7 @@
                 @Html.DisplayNameFor(model => model.TypeGenre.Nome)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TypeCategory)
+                @Html.DisplayNameFor(model => model.TypeCategory.Name)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Rating)
@@ -52,7 +52,7 @@
                     @Html.DisplayFor(modelItem => item.TypeGenre.Nome)
                 </th>
                 <th>
-                    @Html.DisplayFor(modelItem => item.TypeCategory)
+                    @Html.DisplayFor(modelItem => item.TypeCategory.Name)
                 </th>
                 <td>
                     @Html.DisplayFor(modelItem => item.Rating)

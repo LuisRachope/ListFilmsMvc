@@ -1,6 +1,5 @@
 ﻿using ListFilmsMvc.Data;
 using ListFilmsMvc.Models;
-using ListFilmsMvc.Models.Enums;
 using ListFilmsMvc.Models.ViewModels;
 using ListFilmsMvc.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -16,11 +15,13 @@ namespace ListFilmsMvc.Controllers
     {
         public readonly MovieService _movieService;
         private readonly GenreServices _genreService;
+        //private readonly CategoryServices _categoryService;
 
         public MoviesController(MovieService movieService, GenreServices genreServices)
         {
             _movieService = movieService;
             _genreService = genreServices;
+            //_categoryService = categoryService;
         }
 
         public async Task<IActionResult> Index()

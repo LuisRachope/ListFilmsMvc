@@ -1,5 +1,4 @@
 ﻿using ListFilmsMvc.Models;
-using ListFilmsMvc.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,7 +47,7 @@ namespace ListFilmsMvc.Data
             Movie m6 = new Movie(6, "Alquimia das Almas", "Jonathan Demme", 2022, g8, c2, 8.7);
 
             // Adding movies on DB
-            _context.Category.AddRange(c1,c2);
+            _context.Category.AddRange(c1, c2);
             _context.Genre.AddRange(g1, g2, g3, g4, g5, g6, g7, g8);
             _context.Movie.AddRange(m1, m2, m3, m4, m5, m6);
 

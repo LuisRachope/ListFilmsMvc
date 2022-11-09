@@ -1,5 +1,4 @@
-﻿using ListFilmsMvc.Models.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -19,7 +18,10 @@ namespace ListFilmsMvc.Models
         [Display(Name = "Genre")]
         public Genre TypeGenre { get; set; }
         public int GenreId { get; set; }
+
+        [Display(Name = "Category")]
         public Category TypeCategory { get; set; }
+        public int CategoryId { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:F1}")]
         public double Rating { get; set; }
