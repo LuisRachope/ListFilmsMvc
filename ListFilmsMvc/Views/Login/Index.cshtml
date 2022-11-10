@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewData["Title"] = "LOGIN";
+}
+
+
+<h2 class="col-md-5 col-md-offset-5 text-left">@ViewData["Title"]</h2>
+
+<form action="/Login/CheckLogin" method="post">
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-4 text-left">
+            <label for="userId" class="form-label">Usuário: </label>
+            <input type="email" class="form-control" name="Email" value="" placeholder="mome@example.com" />
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-4 text-left">
+            <label for="userId" class="form-label">Senha: </label>
+            <input type="password" class="form-control" name="PassWord" value="PassWord" placeholder="password" />
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="button col-sm-4 col-sm-offset-4 text-left">
+            <button class="btn btn-primary" type="submit">Login</button>
+        </div>
+    </div>
+</form>
