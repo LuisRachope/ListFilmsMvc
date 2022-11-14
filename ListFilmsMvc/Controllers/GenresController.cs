@@ -1,5 +1,6 @@
 ﻿using ListFilmsMvc.Models;
 using ListFilmsMvc.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace ListFilmsMvc.Controllers
 {
+    [Authorize]
     public class GenresController : Controller
     {
         private readonly GenreServices _genreService;

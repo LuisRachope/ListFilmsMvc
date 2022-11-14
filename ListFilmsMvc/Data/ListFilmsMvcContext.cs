@@ -1,4 +1,5 @@
 ﻿using ListFilmsMvc.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ListFilmsMvc.Data
 {
-    public class ListFilmsMvcContext : DbContext
+    public class ListFilmsMvcContext : IdentityDbContext
     {
         public ListFilmsMvcContext(DbContextOptions<ListFilmsMvcContext> options)
           : base(options)

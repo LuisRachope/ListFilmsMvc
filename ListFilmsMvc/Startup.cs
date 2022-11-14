@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -43,6 +44,8 @@ namespace ListFilmsMvc
                     options.UseMySql(Configuration.GetConnectionString("ListFilmsMvcContext"), builder =>
                         builder.MigrationsAssembly("ListFilmsMvc")));
 
+            services.AddDefaultIdentity<IdentityUser>()
+                .AddEntityFrameworkStores<ListFilmsMvcContext>();
 
             //Services addition on project
             services.AddScoped<SeedingService>();
@@ -79,12 +82,13 @@ namespace ListFilmsMvc
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            app.UseAuthentication();
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Login}/{action=Index}/{id?}");
-                //template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

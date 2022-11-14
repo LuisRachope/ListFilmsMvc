@@ -3,14 +3,16 @@ using System;
 using ListFilmsMvc.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ListFilmsMvc.Migrations
 {
     [DbContext(typeof(ListFilmsMvcContext))]
-    partial class ListFilmsMvcContextModelSnapshot : ModelSnapshot
+    [Migration("20221114192234_IdentityAspNetCore")]
+    partial class IdentityAspNetCore
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
