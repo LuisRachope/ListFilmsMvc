@@ -84,6 +84,7 @@ namespace ListFilmsMvc
 
             app.UseAuthentication();
 
+            //Route to page index application
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
